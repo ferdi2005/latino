@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar is-fixed-bottom is-info" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand is-active">
+        <%= link_to root_path, class: "navbar-item" do %><i class="fas fa-home fas-margin"></i>Home<% end %>
+         <%= link_to studies_path, class: "navbar-item" do %><i class="fas fa-book fas-margin"></i>Studia<% end %>
+        <%= link_to quizzes_path, class: "navbar-item" do %><i class="fas fa-question-circle fas-margin"></i>Quiz<% end %>
+      </div>
+    </nav>
+    <div class="section">
+      <%= yield %>
+    </div>
   </body>
 </html>
