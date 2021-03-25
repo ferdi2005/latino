@@ -1,3 +1,5 @@
+<% provide(:title, question.text) %>
+
 <h2 class="title is-2"><%= @question.text %></h2>
 <h3 class="subtitle"><%= @question.points %> punti</h3>
 <% if @question.question_type == 0 %>
