@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: one
+  user: one
+  index_value: 1
+  text_value: MyString
+  correct: 
+  points: 1.5
+
+two:
+  question: two
+  user: two
+  index_value: 1
+  text_value: MyString
+  correct: 
+  points: 1.5

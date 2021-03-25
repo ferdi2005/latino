@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Latino</title>
+    <title><%= yield(:title) %> - Latino Semplice</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,16 +9,33 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   </head>
 
   <body>
     <nav class="navbar is-fixed-bottom is-info" role="navigation" aria-label="main navigation">
       <div class="navbar-brand is-active">
         <%= link_to root_path, class: "navbar-item" do %><i class="fas fa-home fas-margin"></i>Home<% end %>
-         <%= link_to studies_path, class: "navbar-item" do %><i class="fas fa-book fas-margin"></i>Studia<% end %>
+        <%= link_to studies_path, class: "navbar-item" do %><i class="fas fa-book fas-margin"></i>Studia<% end %>
         <%= link_to quizzes_path, class: "navbar-item" do %><i class="fas fa-question-circle fas-margin"></i>Quiz<% end %>
+        <%= link_to classifica_path, class: "navbar-item" do %><i class="fas fa-list-ol fas-margin"></i>Classifica<% end %>
+        <% unless user_signed_in? %>
+          <%= link_to new_user_session_path, class: "navbar-item" do %><i class="fas fa-plus fas-margin"></i>Login<% end %>
+          <%= link_to new_user_registration_path, class: "navbar-item" do %><i class="fas fa-users fas-margin"></i>Registrati<% end %>
+        <% else %>
+          <div class="navbar-item"><i class="fas fa-coins fas-margin"></i><%= current_user.points %> punti</div>
+          <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item" do %><i class="fas fa-minus-square fas-margin"></i>Logout<% end %>
+        <% end %>
       </div>
     </nav>
+    <% flash.each do |key, value| %>
+      <script>
+        Swal.fire({
+          icon: "<%= flash_icon(key) %>",
+          text: "<%= value %>"
+        })
+      </script>
+    <% end %> 
     <div class="section">
       <%= yield %>
     </div>
