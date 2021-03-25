@@ -1,3 +1,16 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.hero {
+  border-radius: 1vh !important;
+}
+
+nav {
+  background-color: #3273dc !important;
+}
+
+#h2_card::selection,
+#p_card::selection {
+  background-color: darkblue;
+}
