@@ -2,6 +2,12 @@ class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[ show edit update destroy ]
   before_action :user_signed_in?
 
+  def create_user_quiz
+    quiz = Quiz.find(params[:id])
+    UserQuiz.create(quiz: quiz, user: current_user)
+    redirect_to question_path
+  end
+
   # GET /quizzes or /quizzes.json
   def index
     @quizzes = Quiz.all
