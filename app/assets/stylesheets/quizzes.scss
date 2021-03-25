@@ -1,3 +1,24 @@
 // Place all the styles related to the quizzes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+#subtitle_quizzes_2 {
+  margin-top: 15px;
+}
+
+#h2_quiz_card::selection,
+#p_quiz_card::selection {
+  background-color: darkblue;
+}
+
+#card1_studies,
+#card2_studies,
+#card3_studies,
+#card4_studies {
+  width: 20vh;
+  height: 25vh;
+  border: solid 1px;
+  margin: 35px;
+  border-radius: 10px;
+  text-align: center;
+}
