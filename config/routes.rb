@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :quizzes
   root 'pages#home'
   get "question", to: "questions#question"
+  post "question", to: "questions#send_question"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

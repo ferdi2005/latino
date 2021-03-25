@@ -1,2 +1,8 @@
-<h1>Questions#question</h1>
-<p>Find me in app/views/questions/question.html.erb</p>
+<h2 class="title is-2"><%= @question.text %></h2>
+<h3 class="subtitle"><%= @question.points %> punti</h3>
+<% if @question.question_type == 0 %>
+    <% @question.options.each do |key, option| %>
+        <%= link_to option, question_path(id: key), method: :post, class: "button is-medium is-fullwidth is-primary" %>
+    <% end %>
+<% end %>
+<%= link_to "Mi arrendo!", question_path(surrender: true), method: :post, class: "button is-medium is-fullwidth is-danger" %>
