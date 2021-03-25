@@ -1,5 +1,6 @@
 class StudiesController < ApplicationController
   before_action :set_study, only: %i[ show edit update destroy ]
+  before_action :user_signed_in?
 
   # GET /studies or /studies.json
   def index

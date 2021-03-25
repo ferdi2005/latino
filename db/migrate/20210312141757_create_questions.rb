@@ -1,7 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration[6.1]
   def change
     create_table :questions do |t|
-      t.integer :type
+      t.integer :question_type
       t.string :options, array: true
       t.integer :correct_options, array: true
       t.string :correct_texts, array: true
