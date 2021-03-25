@@ -1,46 +1,15 @@
 <% provide(:title, "Studia e ripeti") %>
-<p id="notice"><%= notice %></p>
-
-<h1>Studies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Video</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @studies.each do |study| %>
-      <tr>
-        <td><%= study.title %></td>
-        <td><%= study.image %></td>
-        <td><%= study.video %></td>
-        <td><%= link_to 'Show', study %></td>
-        <td><%= link_to 'Edit', edit_study_path(study) %></td>
-        <td><%= link_to 'Destroy', study, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Study', new_study_path %>
-
--->
 
 <h1 class="title is-1">Studia e ripeti</h1>
 
-<section class = "hero is-medium is-link" id = >
-  <div class = "hero-body">
-      <h2 class="title" id = "h2_studies_card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque incidunt quidem nemo nisi inventore.</h2>
-       <p class = "subtitle" id = "p_studies_card">Lorem ipsum dolor sit amet.</p>
+<%= link_to @study do %>
+<section class = "hero is-medium is-link" style='background-image: url("<%= image_url @study.image %>")'>
+  <div class = "hero-body" >
+      <h2 class="title" id = "h2_studies_card"><%= @study.title %>.</h2>
+       <p class ="subtitle" id = "p_studies_card"><%= @study.description %></p>
   </div>
 </section>
+<% end %>
 <br>
 <br>
 
@@ -49,38 +18,18 @@
 </p>
 
 
-<section class="columns">
-  <div class="card" id = "card1_studies">
-    <div class="card-content">
-      <div class="content">
-        <p class="title is-4">Studio1</p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="card" id = "card2_studies">
-    <div class="card-content">
-      <div class="content">
-        <p class="title is-4">Studio2</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="card" id = "card3_studies">
-    <div class="card-content">
-      <div class="content">
-        <p class="title is-4">Studio3</p>
+  <% @studies.each do |study| %>
+    <%= link_to study do %>
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <%= image_tag study.image, width: :auto %>
+            <p class="title is-4"><%= study.title %></p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="card" id = "card4_studies">
-    <div class="card-content">
-      <div class="content">
-        <p class="title is-4">Studio4</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <% end %>
+  <% end %>
 
 

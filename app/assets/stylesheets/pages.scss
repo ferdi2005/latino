@@ -17,12 +17,8 @@ nav {
   background-color: darkblue;
 }
 
-#card1_home,
-#card2_home,
-#card3_home,
-#card4_home {
-  width: 20vh;
-  height: 25vh;
+.card {
+  width: auto;
   border: solid 1px;
   margin: 35px;
   border-radius: 10px;

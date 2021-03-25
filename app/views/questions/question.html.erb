@@ -1,10 +1,10 @@
-<% provide(:title, question.text) %>
+<% provide(:title, @question.text) %>
 
 <h2 class="title is-2"><%= @question.text %></h2>
 <h3 class="subtitle"><%= @question.points %> punti</h3>
 <% if @question.question_type == 0 %>
-    <% @question.options.each do |key, option| %>
-        <%= link_to option, post_question_path(id: key), method: :post, class: "button is-medium is-fullwidth is-primary" %>
+    <% @question.options.each do |key| %>
+        <%= link_to key, post_question_path(id: @question.options.index(key)), method: :post, class: "button is-medium is-fullwidth is-primary has-margin" %>
     <% end %>
 <% end %>
-<%= link_to "Mi arrendo!", post_question_path(surrender: true), method: :post, class: "button is-medium is-fullwidth is-danger" %>
+<%= link_to "Mi arrendo!", post_question_path(surrender: true), method: :post, class: "button is-medium is-fullwidth is-danger has-margin" %>

@@ -1,53 +1,29 @@
 <% provide(:title, "Quiz") %>
-<p id="notice"><%= notice %></p>
-
-<h1>Quizzes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quizzes.each do |quiz| %>
-      <tr>
-        <td><%= quiz.title %></td>
-        <td><%= quiz.description %></td>
-        <td><%= link_to 'Show', quiz %></td>
-        <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
-        <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Quiz', new_quiz_path %> 
-
--->
-
 <h1 class="title is-1">Quiz</h1>
 <h3 class="subtitle is-3">Preparati al compito</h3>
 
-<section class = "hero is-medium is-link">
-  <div class = "hero-body">
-      <h2 class="title" id = "h2_quiz_card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque incidunt quidem nemo nisi inventore.</h2>
-       <p class = "subtitle" id = "p_quiz_card">Lorem ipsum dolor sit amet.</p>
-  </div>
-</section>
+<%= link_to create_user_quiz_path(id: @quiz.id) do %>
+  <section class = "hero is-medium is-link" style='background-image: url("<%= image_url @quiz.image %>")'>
+    <div class = "hero-body">
+        <h2 class="title" id = "h2_quiz_card"><%= @quiz.title %></h2>
+        <p class = "subtitle" id = "p_quiz_card"><%= @quiz.description %></p>
+    </div>
+  </section>
+<% end %>
 
 <h3 class="subtitle is-3" id="subtitle_quizzes_2">Scopri i tuoi punti deboli!</h3>
 
-<section class = "hero is-medium is-link">
-  <div class = "hero-body">
-      <h2 class="title" id = "h2_quiz_card2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates itaque incidunt quidem nemo nisi inventore.</h2>
-       <p class = "subtitle" id = "p_quiz_card2">Lorem ipsum dolor sit amet.</p>
-  </div>
-</section>
 
-<h3 class="subtitle is-3">Esercitati su argomenti specifici</h3>
+<% @quizzes.each do |quiz| %>
+  <%= link_to create_user_quiz_path(id: quiz.id) do %>
+    <section class = "hero is-medium is-link">
+      <div class = "hero-body">
+          <%=image_tag quiz.image, width: 200 %>
+          <h2 class="title" id = "h2_quiz_card2"><%= quiz.title %></h2>
+          <p class = "subtitle" id = "p_quiz_card2"><%= quiz.description %></p>
+      </div>
+    </section>
+  <% end %>
+<% end %>
+
+<!--<h3 class="subtitle is-3">Esercitati su argomenti specifici</h3>-->

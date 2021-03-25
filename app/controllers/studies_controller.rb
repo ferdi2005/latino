@@ -1,10 +1,11 @@
 class StudiesController < ApplicationController
   before_action :set_study, only: %i[ show edit update destroy ]
-  before_action :user_signed_in?
+  before_action :authenticate_user!
 
   # GET /studies or /studies.json
   def index
-    @studies = Study.all
+    @studies = Study.all.shuffle
+    @study = Study.all.sample
   end
 
   # GET /studies/1 or /studies/1.json

@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[ show edit update destroy ]
-  before_action :user_signed_in?
+  before_action :authenticate_user!
+
 
   def create_user_quiz
     quiz = Quiz.find(params[:id])
@@ -10,7 +11,8 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes or /quizzes.json
   def index
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.shuffle
+    @quiz = Quiz.all.sample
   end
 
   # GET /quizzes/1 or /quizzes/1.json
