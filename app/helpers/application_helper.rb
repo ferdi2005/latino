@@ -1,4 +1,10 @@
 module ApplicationHelper
+    QUESTION_TYPES = ["multiple_choice", "completation"]
+
+    def question_type(index)
+        QUESTION_TYPES[index]
+    end
+
     def flash_icon(level)
         case level
             when :notice then "info"
@@ -7,5 +13,5 @@ module ApplicationHelper
             when :alert then "info"
             else "info"
         end
-    end    
+    end
 end
