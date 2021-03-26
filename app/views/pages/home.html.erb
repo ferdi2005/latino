@@ -35,15 +35,19 @@
   </p>
 
 
-<% @quizzes.each do |quiz| %>
-  <%= link_to create_user_quiz_path(id: quiz.id) do %>
-    <div class="card">
-        <div class="card-content">
-          <div class="content">
-            <%= image_tag quiz.image, width: :auto %>
-            <p class="title is-4"><%= quiz.title %></p>
+<% if @quizzes.empty? %>
+<p style="margin-bottom: 20px;">Complimenti! Hai completato tutti i quiz.</p>
+<% else %>
+  <% @quizzes.each do |quiz| %>
+    <%= link_to create_user_quiz_path(id: quiz.id) do %>
+      <div class="card">
+          <div class="card-content">
+            <div class="content">
+              <%= image_tag quiz.image, width: :auto %>
+              <p class="title is-4"><%= quiz.title %></p>
+            </div>
           </div>
-        </div>
-    </div> 
-   <% end %>
+      </div> 
+    <% end %>
+  <% end %>
 <% end %>

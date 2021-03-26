@@ -5,14 +5,20 @@ class QuizzesController < ApplicationController
 
   def create_user_quiz
     quiz = Quiz.find(params[:id])
-    UserQuiz.create(quiz: quiz, user: current_user)
-    redirect_to question_path
+    unless current_user.user_quizzes.where(quiz: quiz, surrender: false).any?
+      UserQuiz.create(quiz: quiz, user: current_user)
+      redirect_to question_path and return
+    else
+      flash[:error] = "Hai già completato questo quiz!"
+      redirect_to quizzes_path
+    end
   end
 
   # GET /quizzes or /quizzes.json
   def index
-    @quizzes = Quiz.all.shuffle
-    @quiz = Quiz.all.sample
+    suitable_quizzes = Quiz.find(Quiz.ids - current_user.user_quizzes.where(surrender: false).pluck(:quiz_id))
+    @quizzes = suitable_quizzes.shuffle
+    @quiz = suitable_quizzes.sample
   end
 
   # GET /quizzes/1 or /quizzes/1.json

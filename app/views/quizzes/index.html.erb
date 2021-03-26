@@ -1,28 +1,33 @@
 <% provide(:title, "Quiz") %>
 <h1 class="title is-1">Quiz</h1>
-<h3 class="subtitle is-3">Preparati al compito</h3>
 
-<%= link_to create_user_quiz_path(id: @quiz.id) do %>
-  <section class = "hero is-medium is-link" style='background-image: url("<%= image_url @quiz.image %>")'>
-    <div class = "hero-body">
-        <h2 class="title" id = "h2_quiz_card"><%= @quiz.title %></h2>
-        <p class = "subtitle" id = "p_quiz_card"><%= @quiz.description %></p>
-    </div>
-  </section>
-<% end %>
+<% if @quizzes.blank? %>
+<p>Complimenti! Hai completato tutti i quiz!</p>
+<% else %>
+  <h3 class="subtitle is-3">Preparati al compito</h3>
 
-<h3 class="subtitle is-3" id="subtitle_quizzes_2">Scopri i tuoi punti deboli!</h3>
-
-
-<% @quizzes.each do |quiz| %>
-  <%= link_to create_user_quiz_path(id: quiz.id) do %>
-    <section class = "hero is-medium is-link">
+  <%= link_to create_user_quiz_path(id: @quiz.id) do %>
+    <section class = "hero is-medium is-link" style='background-image: url("<%= image_url @quiz.image %>")'>
       <div class = "hero-body">
-          <%=image_tag quiz.image, width: 200 %>
-          <h2 class="title" id = "h2_quiz_card2"><%= quiz.title %></h2>
-          <p class = "subtitle" id = "p_quiz_card2"><%= quiz.description %></p>
+          <h2 class="title" id = "h2_quiz_card"><%= @quiz.title %></h2>
+          <p class = "subtitle" id = "p_quiz_card"><%= @quiz.description %></p>
       </div>
     </section>
+  <% end %>
+
+  <h3 class="subtitle is-3" id="subtitle_quizzes_2">Scopri i tuoi punti deboli!</h3>
+
+
+  <% @quizzes.each do |quiz| %>
+    <%= link_to create_user_quiz_path(id: quiz.id) do %>
+      <section class = "hero is-medium is-link">
+        <div class = "hero-body">
+            <%=image_tag quiz.image, width: 200 %>
+            <h2 class="title" id = "h2_quiz_card2"><%= quiz.title %></h2>
+            <p class = "subtitle" id = "p_quiz_card2"><%= quiz.description %></p>
+        </div>
+      </section>
+    <% end %>
   <% end %>
 <% end %>
 
