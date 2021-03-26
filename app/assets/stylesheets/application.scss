@@ -37,3 +37,20 @@ section {
   height: auto !important;
   white-space: unset;
 }
+
+@media only screen and (max-width: 900px) {
+  .nav-text {
+      display: none;
+      clear: both;
+  }
+}
+
+.navbar-brand {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+// Mostra come flexbox anche su 
+.navbar {
+  display: initial !important;
+}
