@@ -1,6 +1,10 @@
 <% provide(:title, "Quiz") %>
 <h1 class="title is-1">Quiz</h1>
 
+<% if current_user.user_quizzes.where(ended: false).any? %>
+  <%= link_to "Riprendi il quiz", question_path, class: "button is-medium is-primary" %>
+<% end %>
+
 <% if @quizzes.blank? %>
 <p>Complimenti! Hai completato tutti i quiz!</p>
 <% else %>
