@@ -5,12 +5,15 @@ class QuizzesController < ApplicationController
 
   def create_user_quiz
     quiz = Quiz.find(params[:id])
-    unless current_user.user_quizzes.where(quiz: quiz, surrender: false).any?
-      UserQuiz.create(quiz: quiz, user: current_user)
+    if current_user.user_quizzes.where(quiz: quiz, surrender: false).any?
+      flash[:error] = "Hai già completato questo quiz!"
+      redirect_to quizzes_path and return
+    elsif current_user.user_quizzes.where(ended: false).any?
+      flash[:error] = "Hai già un quiz attivo! Termina quello prima di avviarne un altro."
       redirect_to question_path and return
     else
-      flash[:error] = "Hai già completato questo quiz!"
-      redirect_to quizzes_path
+      UserQuiz.create(quiz: quiz, user: current_user)
+      redirect_to question_path and return
     end
   end
 
