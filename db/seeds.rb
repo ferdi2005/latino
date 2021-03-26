@@ -22,7 +22,7 @@ Question.create(
 question_type: 0,
 options: ["-mus","-tis","-s","-nt"], 
 correct_options: [3],
-text: "La desinenza della terza persona plurale è:",
+text: "La desinenza della terza persona plurale del presente indicativo è:",
 points: 5, 
 quiz_id: 1)
  
@@ -46,15 +46,15 @@ Question.create(
 question_type: 0,
 options: ["Presente e Imperfetto","Presente e Futuro","Presente e Perfetto","Imperfetto e Perfetto"], 
 correct_options: [1],
-text: "L'imperativo ha i tempi:",
+text: "Il modo imperativo ha i tempi:",
 points: 5, 
 quiz_id: 1)
  
 Question.create(
 question_type: 0,
-options: ["Passato prossimo, passato remoto, trapassato remoto","Passato prossimo, passato remoto","Presente, trapassato prossimo"], 
+options: ["Indicativo Passato prossimo, passato remoto, trapassato remoto","Indicativo Passato prossimo, passato remoto","Condizionale Presente"], 
 correct_options: [0],
-text: "Il perfetto latino corrisponde in italiano a:",
+text: "Il perfetto indicativo latino corrisponde in italiano a:",
 points: 5, 
 quiz_id: 1)
  
@@ -62,7 +62,7 @@ Question.create(
 question_type: 0,
 options: ["Vis","Robis","Roboris","Viris"], 
 correct_options: [2],
-text: "Il genitivo del sostantivo vis è",
+text: "Il genitivo singolare del sostantivo vis è",
 points: 10, 
 quiz_id: 2)
  
@@ -70,7 +70,7 @@ Question.create(
 question_type: 0,
 options: ["-is","-e","-i","-um"], 
 correct_options: [0],
-text: "Il genitivo dei sostantivi di terza declinazione termina in:",
+text: "Il genitivo singolare dei sostantivi di terza declinazione termina in:",
 points: 5, 
 quiz_id: 2)
  
@@ -78,7 +78,7 @@ Question.create(
 question_type: 0,
 options: ["-um","-e","-em","-o"], 
 correct_options: [3],
-text: "L'ablativo dei sostantivi di seconda declinazione neutri termina in:",
+text: "L'ablativo singolare dei sostantivi di seconda declinazione neutri termina in:",
 points: 5, 
 quiz_id: 2)
  
@@ -94,14 +94,14 @@ Question.create(
 question_type: 0,
 options: ["-ibus","-ubus","-is"], 
 correct_options: [1],
-text: "Il dativo e il genitivo plurale del sostantivo acus terminano in:",
+text: "Il dativo e il genitivo plurale del sostantivo arcus terminano in:",
 points: 10, 
 quiz_id: 2)
  
 Question.create(
 question_type: 0,
 options: ["per + accusativo / ablativo semplice","causa/gratia + ablativo","causa/gratia + genitivo"], 
-correct_options: [1],
+correct_options: [0],
 text: "Il complemento di mezzo si trova con:",
 points: 5, 
 quiz_id: 3)
@@ -132,7 +132,7 @@ quiz_id: 3)
  
 Question.create( question_type: 0,
 options: ["genitivo","ablativo semplice","ab + ablativo","de + ablativo"], 
-correct_options: [],
+correct_options: [0],
 text: "Il complemento di qualità morale è:",
 points: 5, 
 quiz_id: 3)
