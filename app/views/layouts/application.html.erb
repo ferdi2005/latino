@@ -18,11 +18,11 @@
         <%= link_to quizzes_path, class: "navbar-item" do %><i class="fas fa-question-circle fas-margin"></i><div class="nav-text">Quiz</div><% end %>
         <%= link_to classifica_path, class: "navbar-item" do %><i class="fas fa-list-ol fas-margin"></i><div class="nav-text">Classifica</div><% end %>
         <% unless user_signed_in? %>
-          <%= link_to new_user_session_path, class: "navbar-item" do %><i class="fas fa-plus fas-margin"></i><div class="nav-text">Login</div><% end %>
-          <%= link_to new_user_registration_path, class: "navbar-item" do %><i class="fas fa-users fas-margin"></i><div class="nav-text">Registrati</div><% end %>
+          <%= link_to new_user_session_path, class: "navbar-item" do %><i class="fas sign-in-alt fas-margin"></i><div class="nav-text">Login</div><% end %>
+          <%= link_to new_user_registration_path, class: "navbar-item" do %><i class="fas fa-user-plus fas-margin"></i><div class="nav-text">Registrati</div><% end %>
         <% else %>
           <div class="navbar-item"><i class="fas fa-coins fas-margin"></i><%= current_user.points %><div class="nav-text">&nbsp;punti</div></div>
-          <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item" do %><i class="fas fa-minus-square fas-margin"></i><div class="nav-text">Logout</div><% end %>
+          <%= link_to destroy_user_session_path, method: :delete, class: "navbar-item" do %><i class="fas fa-sign-out-alt fas-margin"></i><div class="nav-text">Logout</div><% end %>
         <% end %>
       </div>
     </nav>
