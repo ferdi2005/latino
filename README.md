@@ -1,26 +1,9 @@
-# README
+# LatinoSemplice
 
-Environment variables: HOST
+Webapp per lo studio della lingua latina, con quiz e risorse di studio, realizzata da Ferdinando Traversa, Andrea Zotti e Victor Galesi.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Link: https://latino.ferdi.cc
+## Note di installazione
+Environment variables: HOST (link del sito).
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Nel file db/seeds.rb (rails db:seed).
