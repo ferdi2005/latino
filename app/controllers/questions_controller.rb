@@ -19,8 +19,8 @@ class QuestionsController < ApplicationController
       total_points = @user_answers.sum(:points)
       current_user.update(points: current_user.points + points)
       @user_quiz.update(ended: true, end: DateTime.now, points: current_user.points + points)
-      redirect_to quizzes_path and return
       flash[:success] = "Hai completato il quiz con #{points} punti su #{total_points}. Bravo!"
+      redirect_to quizzes_path and return
     else
       @question = Question.find(questions_available.sample)
       session[:question] = @question.id
@@ -33,8 +33,8 @@ class QuestionsController < ApplicationController
     if !params[:surrender].blank? && params[:surrender] == "true"
       user_quiz.update(ended: true, end: DateTime.now, points: 0, surrender: true)
       session.delete(:question)
-      redirect_to quizzes_path and return
       flash[:success] = "Oh no! Ti sei arreso! Non avrai alcun punto."
+      redirect_to quizzes_path and return
     else
       question = Question.find(session[:question])
       session.delete(:question)
