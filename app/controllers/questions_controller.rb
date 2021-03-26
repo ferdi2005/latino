@@ -3,9 +3,10 @@ class QuestionsController < ApplicationController
 
   def question
     user_quizzes = current_user.user_quizzes.where(ended: false)
-    unless user_quizzes.any?
-      redirect_to root_path
+    if !user_quizzes.any?
       flash[:error] = "Non hai avviato alcun quiz!"
+      redirect_to root_path
+      return
     end
 
     @user_quiz = user_quizzes.last
@@ -18,7 +19,7 @@ class QuestionsController < ApplicationController
       total_points = @user_answers.sum(:points)
       current_user.update(points: current_user.points + points)
       @user_quiz.update(ended: true, end: DateTime.now, points: current_user.points + points)
-      redirect_to quizzes_path
+      redirect_to quizzes_path and return
       flash[:success] = "Hai completato il quiz con #{points} punti su #{total_points}. Bravo!"
     else
       @question = Question.find(questions_available.sample)
@@ -27,12 +28,12 @@ class QuestionsController < ApplicationController
   end
 
   def send_question
-    redirect_to root_path if params[:id].blank? && params[:surrender].blank?
+    redirect_to root_path and return if params[:id].blank? && params[:surrender].blank?
     user_quiz = current_user.user_quizzes.where(ended: false).last
     if !params[:surrender].blank? && params[:surrender] == "true"
       user_quiz.update(ended: true, end: DateTime.now, points: 0, surrender: true)
       session.delete(:question)
-      redirect_to quizzes_path
+      redirect_to quizzes_path and return
       flash[:success] = "Oh no! Ti sei arreso! Non avrai alcun punto."
     else
       question = Question.find(session[:question])
